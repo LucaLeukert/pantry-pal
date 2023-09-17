@@ -1,0 +1,32 @@
+{
+  "name": "turbo-solid-astro",
+  "version": "0.0.1",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "prepare": "husky install",
+    "dev": "turbo run dev --no-cache --parallel --continue",
+    "lint": "TIMING=1 eslint \"**/*.{ts,tsx}\"",
+    "lint:ci": "yarn run lint",
+    "build": "turbo run build",
+    "build:ci": "turbo run build:ci",
+    "test": "turbo run test --concurrency=1",
+    "test:ci": "turbo run test:ci --concurrency=1",
+    "ci": "yarn lint:ci && yarn build:ci && yarn test:ci",
+    "format": "prettier --write \"**/*.{astro,js,jsx,ts,tsx,css,scss,md,mdx,yml,yaml,xml,toml,json}\""
+  },
+  "devDependencies": {
+    "@packages/preset-eslint": "workspace:^",
+    "@packages/preset-prettier": "workspace:^",
+    "@packages/preset-ts": "workspace:^",
+    "husky": "^8.0.2",
+    "turbo": "^1.6.3"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "packageManager": "yarn@3.2.4"
+}
